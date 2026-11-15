@@ -5,49 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Great Joseki Compendium</title>
 <style>
-  :root { --bg:#f7f4ee; --fg:#1d1b18; --muted:#6b655c; --line:#d8d1c4; --board:#e3bd72; --grid:#5a4520; --accent:#1f5fae; --card:#fff; }
+  :root { --bg:#f7f4ee; --fg:#1d1b18; --muted:#6b655c; --line:#d8d1c4; --board:#e3bd72; --grid:#5a4520; --accent:#1f5fae; --card:#fff; --good:#1c7a3d; --bad:#b3261e; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#17171a; --fg:#ece9e2; --muted:#9a958b; --line:#34343a; --board:#b8924e; --grid:#3c2d10; --accent:#7fb2f0; --card:#202024; }
+    :root { --bg:#17171a; --fg:#ece9e2; --muted:#9a958b; --line:#34343a; --board:#b8924e; --grid:#3c2d10; --accent:#7fb2f0; --card:#202024; --good:#6fcf8e; --bad:#f2908a; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
-  main { max-width:980px; margin:0 auto; padding:20px 16px 40px; }
+  main { max-width:1000px; margin:0 auto; padding:20px 16px 40px; }
   h1 { font-size:22px; margin:0 0 4px; }
-  p.sub { margin:0 0 16px; color:var(--muted); }
+  p.sub { margin:0 0 14px; color:var(--muted); }
+  a { color:var(--accent); }
   .wrap { display:grid; grid-template-columns:minmax(0,460px) minmax(0,1fr); gap:20px; }
-  @media (max-width:760px) { .wrap { grid-template-columns:1fr; } }
-  svg { width:100%; height:auto; display:block; border-radius:6px; }
-  .bar { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; }
+  @media (max-width:760px) { .wrap { grid-template-columns:minmax(0,1fr); } }
+  svg { width:100%; height:auto; display:block; border-radius:6px; touch-action:manipulation; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; align-items:center; }
+  .bar .lbl { color:var(--muted); font-size:14px; }
   button { font:inherit; color:var(--fg); background:var(--card); border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; }
   button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
   button:disabled { opacity:.45; cursor:default; }
   .seq { font-family:ui-monospace, monospace; font-size:14px; min-height:22px; margin:10px 0; overflow-wrap:anywhere; }
-  .tag { display:inline-block; border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:1px 10px; font-size:13px; margin:0 6px 6px 0; }
+  .tag { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:1px 10px; font-size:13px; margin:0 6px 6px 0; }
+  .tag.key { border-color:var(--accent); color:var(--accent); }
   table { width:100%; border-collapse:collapse; font-size:14px; }
   th, td { text-align:right; padding:5px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
   th:first-child, td:first-child { text-align:left; }
-  tbody tr { cursor:pointer; }
-  tbody tr:hover, tbody tr:focus { background:var(--card); outline:none; }
+  td:first-child, td:last-child { white-space:normal; }
+  td:last-child { color:var(--muted); min-width:84px; }
+  tbody tr.go { cursor:pointer; }
+  tbody tr.go:hover, tbody tr.go:focus { background:var(--card); outline:none; }
+  tbody tr.mis td { color:var(--muted); }
   td.sel, th.sel { color:var(--accent); font-weight:600; }
   .note { color:var(--muted); font-size:13px; margin-top:12px; }
   .scroll { overflow-x:auto; }
+  .msg { min-height:48px; margin:0 0 12px; font-size:16px; }
+  .msg b.ok { color:var(--good); } .msg b.no { color:var(--bad); }
+  [hidden] { display:none !important; }
 </style>
 </head>
 <body>
 <main>
   <h1>The Great Joseki Compendium</h1>
-  <p class="sub">Corner sequences from 1.2 million ranked OGS games, by rank band. Click a move to play it.</p>
+  <p class="sub">Corner sequences from 1.2 million ranked OGS games, by rank band, scored by KataGo.
+    <a href="https://github.com/jonmoses/the-great-joseki-compendium">Data and method</a></p>
+  <div class="bar" role="group" aria-label="Mode">
+    <button id="m-explore" aria-pressed="true">Explore</button>
+    <button id="m-practice" aria-pressed="false">Practice</button>
+    <span class="lbl">Rank band</span>
+    <span id="bands" class="bar" style="margin:0" role="group" aria-label="Rank band"></span>
+  </div>
   <div class="wrap">
     <div>
       <svg id="board" viewBox="0 0 430 430" role="img" aria-label="Corner of a Go board"></svg>
       <div class="seq" id="seq"></div>
-      <div class="bar">
+      <div class="bar" id="nav">
         <button id="back">Back</button>
         <button id="reset">Start over</button>
       </div>
     </div>
-    <div>
-      <div class="bar" id="bands" role="group" aria-label="Rank band"></div>
+    <div id="explore">
       <div id="tags"></div>
       <div class="scroll">
         <table>
@@ -57,12 +72,23 @@
       </div>
       <p class="note" id="note"></p>
     </div>
+    <div id="practice" hidden>
+      <p class="msg" id="msg"></p>
+      <div class="bar">
+        <button id="p-next">Next line</button>
+        <button id="p-show">Show the move</button>
+        <button id="p-open">Open in Explore</button>
+      </div>
+      <div id="ptags"></div>
+      <p class="note">Practice draws a settled line at random, weighted by how often it is played in the chosen band. Lines KataGo scores as lopsided are left out. Click the board to play your side's moves.</p>
+    </div>
   </div>
 </main>
 <script>
 const N = 13, CELL = 32, PAD = 23;
 const svgNS = 'http://www.w3.org/2000/svg';
-let book = null, path = [], band = 0;
+let book = null, mist = {}, path = [], band = 0, mode = 'explore';
+let drill = null;   // { toks, at, side, flip, misses, wrong, reveal, done, said, saidOk }
 
 function el(name, attrs, text) {
   const e = document.createElementNS(svgNS, name);
@@ -70,16 +96,23 @@ function el(name, attrs, text) {
   if (text !== undefined) e.textContent = text;
   return e;
 }
+function h(name, text, cls) { const e = document.createElement(name); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
 // corner drawn in the upper right: x counts from the right edge, y from the top
 function px(x) { return PAD + (N - x) * CELL; }
 function py(y) { return PAD + (y - 1) * CELL; }
 function parse(tok) { const [x, y] = tok.slice(1).split('-').map(Number); return { p: tok[0], x, y }; }
 function cur() { return path.join(' '); }
-function nextNames() { return path.length ? book.positions[cur()].next : book.meta.first_moves; }
-function visits(i) { return path.length ? book.positions[cur()].count[i] : book.meta.corners[i]; }
+function pos(k) { return book.positions[k]; }
+function nextNames() { return path.length ? pos(cur()).next : book.meta.first_moves; }
+function mistakeNames() { return path.length ? pos(cur()).mistakes : book.meta.first_move_mistakes; }
+function visits(i) { return path.length ? pos(cur()).count[i] : book.meta.corners[i]; }
 function pct(v) { return v >= 0.1 ? (100 * v).toFixed(0) + '%' : (100 * v).toFixed(1) + '%'; }
+function symmetric(toks) {
+  const set = new Set(toks);
+  return toks.every((t) => { const m = parse(t); return set.has(m.p + m.y + '-' + m.x); });
+}
 
-function draw() {
+function drawBoard(toks, flip, marks, onPoint) {
   const svg = document.getElementById('board');
   svg.replaceChildren();
   svg.append(el('rect', { x: 0, y: 0, width: 430, height: 430, fill: 'var(--board)' }));
@@ -88,90 +121,204 @@ function draw() {
     svg.append(el('line', { x1: 0, y1: py(i), x2: px(1), y2: py(i), stroke: 'var(--grid)', 'stroke-width': 1 }));
   }
   for (const [x, y] of [[4, 4], [10, 4], [4, 10], [10, 10]]) svg.append(el('circle', { cx: px(x), cy: py(y), r: 3, fill: 'var(--grid)' }));
-  path.forEach((tok, i) => {
-    const m = parse(tok);
-    if (m.x > N || m.y > N) return;
+  toks.forEach((tok, i) => {
+    const m = parse(tok); const [x, y] = flip ? [m.y, m.x] : [m.x, m.y];
+    if (x > N || y > N) return;
     const black = m.p === 'X';
-    svg.append(el('circle', { cx: px(m.x), cy: py(m.y), r: 14.5, fill: black ? '#111' : '#f6f6f6', stroke: '#111', 'stroke-width': 1 }));
-    svg.append(el('text', { x: px(m.x), y: py(m.y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif' }, String(i + 1)));
+    svg.append(el('circle', { cx: px(x), cy: py(y), r: 14.5, fill: black ? '#111' : '#f6f6f6', stroke: '#111', 'stroke-width': 1 }));
+    svg.append(el('text', { x: px(x), y: py(y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif', 'pointer-events': 'none' }, String(i + 1)));
   });
-  const here = visits(band);
-  nextNames().slice(0, 12).forEach((name, i) => {
-    const m = parse(name.split(' ').pop());
-    if (m.x > N || m.y > N) return;
-    const share = here ? book.positions[name].count[band] / here : 0;
-    const g = el('g', { style: 'cursor:pointer' });
-    if (i >= 3 && share < 0.01) return;
-    const black = m.p === 'X';
-    g.append(el('circle', { cx: px(m.x), cy: py(m.y), r: 13, fill: black ? '#222' : '#fafafa', 'fill-opacity': 0.8, stroke: black ? '#fafafa' : '#222', 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
-    g.append(el('text', { x: px(m.x), y: py(m.y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 700, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif' }, String.fromCharCode(65 + i)));
-    g.addEventListener('click', () => { path = name.split(' '); render(); });
-    svg.append(g);
-  });
+  (marks || []).forEach((mk) => svg.append(mk));
+  if (onPoint) {
+    for (let x = 1; x <= N; x++) for (let y = 1; y <= N; y++) {
+      const hit = el('circle', { cx: px(x), cy: py(y), r: 15, fill: 'transparent', style: 'cursor:pointer' });
+      hit.addEventListener('click', () => onPoint(x, y));
+      svg.append(hit);
+    }
+  }
+}
+
+function renderBands() {
+  const bar = document.getElementById('bands');
+  bar.replaceChildren(...book.meta.bands.map((b, i) => {
+    const btn = h('button', b); btn.setAttribute('aria-pressed', String(i === band));
+    btn.addEventListener('click', () => { band = i; renderBands(); if (mode === 'practice') newDrill(); else render(); });
+    return btn;
+  }));
+}
+
+function tagsFor(p, box) {
+  box.replaceChildren();
+  const add = (t, key) => box.append(h('span', t, 'tag' + (key ? ' key' : '')));
+  if (p.line) add('Settled line', true);
+  if (p.verdict) add('KataGo: ' + p.verdict + ' (' + (p.score > 0 ? '+' : '') + p.score.toFixed(1) + ' for X)', true);
+  if (p.depends_on_surroundings) add('Depends on the rest of the board');
+  add('First common at ' + p.first_band);
+  add('Most common at ' + p.peak_band);
+  add('Corner settles here ' + Math.round(100 * p.settled_share) + '%');
+  const w = p.x_win_rate[band];
+  if (w !== null) add('X won ' + Math.round(100 * w) + '% of these games at ' + book.meta.bands[band]);
+  const y = p.per10k_by_year;
+  add(book.meta.years[0] + ' to ' + book.meta.years[y.length - 1] + ': ' + y[0] + ' to ' + y[y.length - 1] + ' per 10,000');
 }
 
 function render() {
-  draw();
+  const names = nextNames();
+  const here = visits(band);
+  const marks = [];
+  names.slice(0, 12).forEach((name, i) => {
+    const m = parse(name.split(' ').pop());
+    if (m.x > N || m.y > N) return;
+    const share = here ? pos(name).count[band] / here : 0;
+    if (i >= 3 && share < 0.01) return;
+    const black = m.p === 'X';
+    const g = el('g', { style: 'cursor:pointer' });
+    g.append(el('circle', { cx: px(m.x), cy: py(m.y), r: 13, fill: black ? '#222' : '#fafafa', 'fill-opacity': 0.8, stroke: black ? '#fafafa' : '#222', 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+    g.append(el('text', { x: px(m.x), y: py(m.y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 700, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif' }, String.fromCharCode(65 + i)));
+    g.addEventListener('click', () => { path = name.split(' '); render(); });
+    marks.push(g);
+  });
+  drawBoard(path, false, marks, null);
   history.replaceState(null, '', path.length ? '#' + path.join('_') : location.pathname);
   document.getElementById('seq').textContent = cur() || 'Empty corner';
   document.getElementById('back').disabled = !path.length;
   document.getElementById('reset').disabled = !path.length;
   const bands = book.meta.bands;
-  const bar = document.getElementById('bands');
-  bar.replaceChildren(...bands.map((b, i) => {
-    const btn = document.createElement('button');
-    btn.textContent = b; btn.setAttribute('aria-pressed', String(i === band));
-    btn.addEventListener('click', () => { band = i; render(); });
-    return btn;
-  }));
   const tags = document.getElementById('tags');
-  tags.replaceChildren();
-  if (path.length) {
-    const p = book.positions[cur()];
-    const add = (t) => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.append(s); };
-    if (p.line) add('Settled line');
-    add('First common at ' + p.first_band);
-    add('Most common at ' + p.peak_band);
-    add('Corner settles here ' + Math.round(100 * p.settled_share) + '%');
-  }
+  if (path.length) tagsFor(pos(cur()), tags); else tags.replaceChildren();
   const head = document.getElementById('head');
-  head.replaceChildren(...['Next move'].concat(bands).map((t, i) => {
-    const th = document.createElement('th'); th.textContent = t; if (i - 1 === band) th.className = 'sel'; return th;
+  head.replaceChildren(...['Next move'].concat(bands, ['KataGo']).map((t, i) => {
+    const th = h('th', t); if (i - 1 === band) th.className = 'sel'; return th;
   }));
-  const rows = document.getElementById('rows');
-  rows.replaceChildren(...nextNames().map((name, i) => {
-    const tr = document.createElement('tr'); tr.tabIndex = 0;
+  const best = path.length ? (pos(cur()).katago_next || []) : [];
+  const sym = symmetric(path);
+  const isBest = (tok) => { const m = parse(tok); return best.includes(m.x + '-' + m.y) || (sym && best.includes(m.y + '-' + m.x)); };
+  const lastP = path.length ? path[path.length - 1][0] : 'O';
+  const row = (name, i, p, bad) => {
+    const tr = h('tr', undefined, bad ? 'mis' : 'go');
     const tok = name.split(' ').pop();
-    const same = path.length && tok[0] === path[path.length - 1][0];
-    const td = document.createElement('td');
-    td.textContent = (i < 12 ? String.fromCharCode(65 + i) + '  ' : '') + tok + (same ? ' (other side elsewhere)' : '');
-    tr.append(td);
+    const same = tok[0] === lastP;
+    tr.append(h('td', (!bad && i < 12 ? String.fromCharCode(65 + i) + '  ' : '') + tok + (same ? ' (other side elsewhere)' : '')));
     bands.forEach((b, j) => {
-      const c = document.createElement('td'); const v = visits(j);
-      c.textContent = v ? pct(book.positions[name].count[j] / v) : '';
-      if (j === band) c.className = 'sel';
+      const v = visits(j);
+      const c = h('td', v ? pct(p.count[j] / v) : ''); if (j === band) c.className = 'sel';
       tr.append(c);
     });
-    const go = () => { path = name.split(' '); render(); };
-    tr.addEventListener('click', go);
-    tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+    let k = p.move_loss === null ? '' : (p.move_loss < 0.5 ? 'fine' : 'loses ' + p.move_loss.toFixed(1));
+    if (bad) k = p.kind === 'one-sided' ? 'one-sided, ' + p.by + ' is ' + Math.abs(p.score).toFixed(1) + ' behind' : 'mistake, loses ' + p.move_loss.toFixed(1);
+    else if (isBest(tok)) k = 'first choice';
+    tr.append(h('td', k));
+    if (!bad) {
+      tr.tabIndex = 0;
+      const go = () => { path = name.split(' '); render(); };
+      tr.addEventListener('click', go);
+      tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+    }
     return tr;
-  }));
-  const per = path.length ? book.positions[cur()].per10k[band] : 10000;
+  };
+  const rows = document.getElementById('rows');
+  rows.replaceChildren(...names.map((n, i) => row(n, i, pos(n), false)),
+    ...mistakeNames().filter((n) => mist[n]).map((n, i) => row(n, i, mist[n], true)));
+  const per = path.length ? pos(cur()).per10k[band] : 10000;
+  let extra = '';
+  if (best.length && !names.some((n) => isBest(n.split(' ').pop()))) extra = ' KataGo\'s first choice here is ' + best.join(' or ') + '.';
   document.getElementById('note').textContent = (path.length
     ? 'This position: ' + per + ' per 10,000 corners at ' + bands[band] + '. '
-    : '') + 'Percentages are the share of visits to this position that continue with each move. X is the side that played first in the corner. Common is not the same as correct: nothing here was checked against a joseki book.';
+    : '') + 'Percentages are the share of visits to this position that continue with each move. X is the side that played first in the corner. The KataGo column is the points a move gives up, scored with little else on the board.' + extra;
 }
 
+// ---- practice ----
+function pickLine() {
+  const pool = [];
+  let total = 0;
+  for (const k in book.positions) {
+    const p = book.positions[k];
+    if (!p.line || p.depth < 4 || p.score === null || Math.abs(p.score) >= 2 || p.depends_on_surroundings) continue;
+    const w = p.settled_count[band];
+    if (w > 0) { pool.push([k, w]); total += w; }
+  }
+  let r = Math.random() * total;
+  for (const [k, w] of pool) { r -= w; if (r <= 0) return k; }
+  return pool.length ? pool[pool.length - 1][0] : null;
+}
+function newDrill() {
+  const k = pickLine();
+  if (!k) { drill = null; document.getElementById('msg').textContent = 'No lines to practise in this band.'; return; }
+  drill = { toks: k.split(' '), at: 1, side: Math.random() < 0.5 ? 'X' : 'O', flip: false, misses: 0, wrong: null, reveal: false, done: false, said: '', saidOk: true };
+  advance();
+}
+function advance() {
+  // play the other side's moves until it is the learner's turn
+  while (drill.at < drill.toks.length && drill.toks[drill.at][0] !== drill.side) drill.at++;
+  if (drill.at >= drill.toks.length) drill.done = true;
+  renderDrill();
+}
+function renderDrill() {
+  const d = drill, shown = d.toks.slice(0, d.at), marks = [];
+  if (d.wrong) marks.push(el('circle', { cx: px(d.wrong[0]), cy: py(d.wrong[1]), r: 12, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 3 }));
+  if (d.reveal && !d.done) {
+    const m = parse(d.toks[d.at]); const [x, y] = d.flip ? [m.y, m.x] : [m.x, m.y];
+    marks.push(el('circle', { cx: px(x), cy: py(y), r: 12, fill: 'none', stroke: 'var(--good)', 'stroke-width': 3 }));
+  }
+  drawBoard(shown, d.flip, marks, d.done ? null : clickDrill);
+  document.getElementById('seq').textContent = shown.join(' ');
+  const msg = document.getElementById('msg');
+  msg.replaceChildren();
+  const side = d.side === 'X' ? 'Black (first in the corner)' : 'White (second in the corner)';
+  if (d.done) {
+    msg.append(h('b', 'Line complete. ', 'ok'), document.createTextNode(d.misses ? d.misses + (d.misses === 1 ? ' miss.' : ' misses.') : 'No misses.'));
+    tagsFor(pos(d.toks.join(' ')), document.getElementById('ptags'));
+  } else {
+    if (d.said) msg.append(h('b', d.said + ' ', d.saidOk ? 'ok' : 'no'));
+    const prev = d.toks[d.at - 1][0];
+    msg.append(document.createTextNode('You are ' + side + '. Play move ' + (d.at + 1) + '.' + (prev === d.side ? ' The other side has played elsewhere.' : '')));
+    document.getElementById('ptags').replaceChildren();
+  }
+  document.getElementById('p-show').disabled = d.done;
+}
+function clickDrill(x, y) {
+  const d = drill, m = parse(d.toks[d.at]);
+  const want = d.flip ? [m.y, m.x] : [m.x, m.y];
+  const shown = d.toks.slice(0, d.at);
+  const right = () => { d.said = 'Right.'; d.saidOk = true; d.at++; advance(); };
+  d.wrong = null; d.reveal = false;
+  if (x === want[0] && y === want[1]) { right(); return; }
+  if (x === want[1] && y === want[0] && symmetric(shown)) { d.flip = !d.flip; right(); return; }
+  d.misses++; d.wrong = [x, y];
+  const lx = d.flip ? y : x, ly = d.flip ? x : y;
+  const alt = shown.join(' ') + ' ' + d.side + lx + '-' + ly;
+  d.saidOk = false;
+  d.said = book.positions[alt] ? 'That is also played, but this line goes another way.' : (mist[alt] ? 'That is a common mistake.' : 'Not this line.');
+  if (d.misses >= 2) d.reveal = true;
+  renderDrill();
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('m-explore').setAttribute('aria-pressed', String(m === 'explore'));
+  document.getElementById('m-practice').setAttribute('aria-pressed', String(m === 'practice'));
+  document.getElementById('explore').hidden = m !== 'explore';
+  document.getElementById('practice').hidden = m !== 'practice';
+  document.getElementById('nav').hidden = m !== 'explore';
+  if (m === 'practice') newDrill(); else render();
+}
+document.getElementById('m-explore').addEventListener('click', () => setMode('explore'));
+document.getElementById('m-practice').addEventListener('click', () => setMode('practice'));
 document.getElementById('back').addEventListener('click', () => { path.pop(); render(); });
 document.getElementById('reset').addEventListener('click', () => { path = []; render(); });
-fetch('data/joseki.json').then((r) => r.json()).then((j) => {
-  book = j;
-  const want = decodeURIComponent(location.hash.slice(1)).split('_').join(' ');
-  if (want && book.positions[want]) path = want.split(' ');
-  render();
-})
-  .catch(() => { document.getElementById('note').textContent = 'Could not load data/joseki.json. Serve this folder over HTTP (for example: python3 -m http.server).'; });
+document.getElementById('p-next').addEventListener('click', newDrill);
+document.getElementById('p-show').addEventListener('click', () => { if (drill && !drill.done) { drill.misses++; drill.reveal = true; drill.wrong = null; renderDrill(); } });
+document.getElementById('p-open').addEventListener('click', () => { if (drill) { path = drill.toks.slice(0, drill.done ? drill.toks.length : drill.at); setMode('explore'); } });
+
+Promise.all([fetch('data/joseki.json').then((r) => r.json()), fetch('data/mistakes.json').then((r) => r.json())])
+  .then(([j, m]) => {
+    book = j; mist = m.mistakes;
+    const want = decodeURIComponent(location.hash.slice(1)).split('_').join(' ');
+    if (want && book.positions[want]) path = want.split(' ');
+    renderBands();
+    if (want === 'practice') setMode('practice'); else render();
+  })
+  .catch(() => { document.getElementById('note').textContent = 'Could not load the data. Serve this folder over HTTP (for example: python3 -m http.server).'; });
 </script>
 </body>
 </html>

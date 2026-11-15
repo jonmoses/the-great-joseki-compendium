@@ -1,111 +1,205 @@
-(;GM[1]FF[4]CA[UTF-8]SZ[19]GN[The Great Joseki Compendium: 3-5]C[First corner move 3-5. Black is the side that played first in the corner. Two moves in a row by one colour mean the other side played elsewhere. Numbers are occurrences per 10,000 corners in each OGS rank band.](;B[qe]C[Per 10,000 corners: 15k-10k 71.5 | 9k-5k 74.82 | 4k-1k 152.52 | 1d+ 125.18
-Corner settles here: 0%](;W[pc]C[Per 10,000 corners: 15k-10k 16.28 | 9k-5k 20.99 | 4k-1k 46.8 | 1d+ 37.18
-Corner settles here: 0%](;B[od]C[Per 10,000 corners: 15k-10k 3.51 | 9k-5k 7.15 | 4k-1k 20.58 | 1d+ 15.92
-Corner settles here: 0%];W[oc]C[Per 10,000 corners: 15k-10k 2.53 | 9k-5k 5.99 | 4k-1k 18.76 | 1d+ 15.07
-Corner settles here: 0%];B[nd]C[Per 10,000 corners: 15k-10k 2.2 | 9k-5k 5.45 | 4k-1k 17.96 | 1d+ 14.71
-Corner settles here: 0%](;W[mc]C[Per 10,000 corners: 15k-10k 0.76 | 9k-5k 2.46 | 4k-1k 8.52 | 1d+ 9.23
-Corner settles here: 18%];B[md]C[Per 10,000 corners: 15k-10k 0.28 | 9k-5k 1.21 | 4k-1k 5.43 | 1d+ 3.12
-Corner settles here: 0%];W[lc]C[LINE. First common at 4k-1k, most common at 4k-1k.
+(;GM[1]FF[4]CA[UTF-8]SZ[19]GN[The Great Joseki Compendium: 3-5]C[First corner move 3-5. Black is the side that played first in the corner. Two moves in a row by one colour mean the other side played elsewhere. Numbers are occurrences per 10,000 corners in each OGS rank band. KataGo scores are points, positive for Black.](;B[qe]C[Per 10,000 corners: 15k-10k 71.5 | 9k-5k 74.82 | 4k-1k 152.52 | 1d+ 125.18
+Corner settles here: 0%
+KataGo: Even (-0.9 for Black)](;W[pc]C[Per 10,000 corners: 15k-10k 16.28 | 9k-5k 20.99 | 4k-1k 46.8 | 1d+ 37.18
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.1 for Black)](;B[od]C[Per 10,000 corners: 15k-10k 3.51 | 9k-5k 7.15 | 4k-1k 20.58 | 1d+ 15.92
+Corner settles here: 0%
+KataGo: Even (-0.8 for Black)];W[oc]C[Per 10,000 corners: 15k-10k 2.53 | 9k-5k 5.99 | 4k-1k 18.76 | 1d+ 15.07
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.1 for Black)];B[nd]C[Per 10,000 corners: 15k-10k 2.2 | 9k-5k 5.45 | 4k-1k 17.96 | 1d+ 14.71
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.0 for Black)](;W[mc]C[Per 10,000 corners: 15k-10k 0.76 | 9k-5k 2.46 | 4k-1k 8.52 | 1d+ 9.23
+Corner settles here: 18%
+KataGo: Slightly better for White (-1.2 for Black)];B[md]C[Per 10,000 corners: 15k-10k 0.28 | 9k-5k 1.21 | 4k-1k 5.43 | 1d+ 3.12
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.2 for Black)];W[lc]C[LINE. First common at 4k-1k, most common at 4k-1k.
 Per 10,000 corners: 15k-10k 0.24 | 9k-5k 1.14 | 4k-1k 5.37 | 1d+ 3.08
-Corner settles here: 40%])(;W[nc]C[Per 10,000 corners: 15k-10k 0.91 | 9k-5k 2.06 | 4k-1k 7.2 | 1d+ 3.48
-Corner settles here: 1%];B[md]C[Per 10,000 corners: 15k-10k 0.75 | 9k-5k 1.8 | 4k-1k 6.73 | 1d+ 3.34
-Corner settles here: 3%];W[lc]C[Per 10,000 corners: 15k-10k 0.23 | 9k-5k 0.98 | 4k-1k 4.52 | 1d+ 2.27
-Corner settles here: 24%];B[ld]C[Per 10,000 corners: 15k-10k 0.05 | 9k-5k 0.39 | 4k-1k 2.67 | 1d+ 0.71
-Corner settles here: 0%];W[kc]C[LINE. First common at 4k-1k, most common at 4k-1k.
+Corner settles here: 40%
+KataGo: Slightly better for White (-1.3 for Black)])(;W[nc]C[Per 10,000 corners: 15k-10k 0.91 | 9k-5k 2.06 | 4k-1k 7.2 | 1d+ 3.48
+Corner settles here: 1%
+KataGo: Even (-0.8 for Black)];B[md]C[Per 10,000 corners: 15k-10k 0.75 | 9k-5k 1.8 | 4k-1k 6.73 | 1d+ 3.34
+Corner settles here: 3%
+KataGo: Even (-0.7 for Black)];W[lc]C[Per 10,000 corners: 15k-10k 0.23 | 9k-5k 0.98 | 4k-1k 4.52 | 1d+ 2.27
+Corner settles here: 24%
+KataGo: Even (-0.9 for Black)];B[ld]C[Per 10,000 corners: 15k-10k 0.05 | 9k-5k 0.39 | 4k-1k 2.67 | 1d+ 0.71
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.6 for Black)];W[kc]C[LINE. First common at 4k-1k, most common at 4k-1k.
 Per 10,000 corners: 15k-10k 0.05 | 9k-5k 0.37 | 4k-1k 2.61 | 1d+ 0.71
-Corner settles here: 61%]))(;B[nd]C[Per 10,000 corners: 15k-10k 2.03 | 9k-5k 3.23 | 4k-1k 4.1 | 1d+ 6.46
-Corner settles here: 1%];W[pe]C[Per 10,000 corners: 15k-10k 0.84 | 9k-5k 1.67 | 4k-1k 2.63 | 1d+ 3.61
-Corner settles here: 0%];B[pd]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 1.5 | 4k-1k 2.46 | 1d+ 3.48
-Corner settles here: 0%];W[od]C[Per 10,000 corners: 15k-10k 0.56 | 9k-5k 1.19 | 4k-1k 2.17 | 1d+ 3.43
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 0.56 | 9k-5k 1.19 | 4k-1k 2.17 | 1d+ 3.43
-Corner settles here: 0%];W[oc]C[Per 10,000 corners: 15k-10k 0.35 | 9k-5k 0.84 | 4k-1k 1.52 | 1d+ 2.94
-Corner settles here: 0%];B[oe]C[Per 10,000 corners: 15k-10k 0.3 | 9k-5k 0.77 | 4k-1k 1.48 | 1d+ 2.94
-Corner settles here: 0%];W[pf]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.58 | 4k-1k 1.03 | 1d+ 2.59
-Corner settles here: 0%];B[qc]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.39 | 4k-1k 0.77 | 1d+ 2.36
-Corner settles here: 0%])(;B[nc]C[Per 10,000 corners: 15k-10k 1.78 | 9k-5k 2.54 | 4k-1k 5.05 | 1d+ 3.83
-Corner settles here: 1%](;W[pe]C[Per 10,000 corners: 15k-10k 0.54 | 9k-5k 1.11 | 4k-1k 3.01 | 1d+ 2.1
-Corner settles here: 0%];B[pf]C[Per 10,000 corners: 15k-10k 0.34 | 9k-5k 0.8 | 4k-1k 2.56 | 1d+ 2.05
-Corner settles here: 0%];W[oe]C[Per 10,000 corners: 15k-10k 0.26 | 9k-5k 0.67 | 4k-1k 2.33 | 1d+ 2.01
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 0.19 | 9k-5k 0.61 | 4k-1k 2.27 | 1d+ 2.01
-Corner settles here: 0%];W[oc]C[Per 10,000 corners: 15k-10k 0.15 | 9k-5k 0.48 | 4k-1k 1.92 | 1d+ 1.83
-Corner settles here: 2%])(;W[od]C[Per 10,000 corners: 15k-10k 0.58 | 9k-5k 0.81 | 4k-1k 1.08 | 1d+ 0.98
-Corner settles here: 0%]))(;B[mc]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 1.71 | 4k-1k 6.45 | 1d+ 5.84
-Corner settles here: 0%](;W[pe]C[Per 10,000 corners: 15k-10k 0.23 | 9k-5k 0.59 | 4k-1k 2.61 | 1d+ 2.27
-Corner settles here: 0%];B[pf]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.5 | 4k-1k 2.42 | 1d+ 2.14
-Corner settles here: 0%];W[oe]C[Per 10,000 corners: 15k-10k 0.13 | 9k-5k 0.42 | 4k-1k 2.01 | 1d+ 1.92
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 0.12 | 9k-5k 0.37 | 4k-1k 2.0 | 1d+ 1.74
-Corner settles here: 0%];W[qc]C[Per 10,000 corners: 15k-10k 0.07 | 9k-5k 0.25 | 4k-1k 1.6 | 1d+ 1.52
-Corner settles here: 1%])(;W[od]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.4 | 4k-1k 1.94 | 1d+ 2.9
-Corner settles here: 2%]))(;B[qc]C[Per 10,000 corners: 15k-10k 3.25 | 9k-5k 2.09 | 4k-1k 1.07 | 1d+ 0.22
-Corner settles here: 0%](;W[qb]C[Per 10,000 corners: 15k-10k 1.32 | 9k-5k 1.02 | 4k-1k 0.88 | 1d+ 0.22
-Corner settles here: 0%])(;W[pd]C[Per 10,000 corners: 15k-10k 1.39 | 9k-5k 0.84 | 4k-1k 0.15 | 1d+ 0.0
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 1.19 | 9k-5k 0.82 | 4k-1k 0.15 | 1d+ 0.0
-Corner settles here: 2%]))(;B[rc]C[Per 10,000 corners: 15k-10k 0.55 | 9k-5k 0.27 | 4k-1k 3.62 | 1d+ 0.67
-Corner settles here: 3%];W[mc]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.08 | 4k-1k 1.45 | 1d+ 0.18
-Corner settles here: 11%];B[qb]C[LINE. First common at 4k-1k, most common at 4k-1k.
-Per 10,000 corners: 15k-10k 0.05 | 9k-5k 0.02 | 4k-1k 1.16 | 1d+ 0.18
-Corner settles here: 52%])(;B[qb]C[Per 10,000 corners: 15k-10k 0.08 | 9k-5k 0.32 | 4k-1k 1.49 | 1d+ 0.49
-Corner settles here: 4%];W[qc]C[Per 10,000 corners: 15k-10k 0.06 | 9k-5k 0.26 | 4k-1k 1.1 | 1d+ 0.36
-Corner settles here: 0%];B[oc]C[Per 10,000 corners: 15k-10k 0.05 | 9k-5k 0.25 | 4k-1k 1.1 | 1d+ 0.36
-Corner settles here: 0%]))(;B[pc]C[Per 10,000 corners: 15k-10k 15.51 | 9k-5k 12.69 | 4k-1k 24.65 | 1d+ 19.26
-Corner settles here: 0%](;W[mc]C[LINE. First common at 15k-10k, most common at 4k-1k.
+Corner settles here: 61%
+KataGo: Slightly better for White (-1.7 for Black)]))(;B[nd]C[Per 10,000 corners: 15k-10k 2.03 | 9k-5k 3.23 | 4k-1k 4.1 | 1d+ 6.46
+Corner settles here: 1%
+KataGo: Slightly better for White (-1.0 for Black)];W[pe]C[Per 10,000 corners: 15k-10k 0.84 | 9k-5k 1.67 | 4k-1k 2.63 | 1d+ 3.61
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.3 for Black)];B[pd]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 1.5 | 4k-1k 2.46 | 1d+ 3.48
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.2 for Black)];W[od]C[Per 10,000 corners: 15k-10k 0.56 | 9k-5k 1.19 | 4k-1k 2.17 | 1d+ 3.43
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.3 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 0.56 | 9k-5k 1.19 | 4k-1k 2.17 | 1d+ 3.43
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.3 for Black)];W[oc]C[Per 10,000 corners: 15k-10k 0.35 | 9k-5k 0.84 | 4k-1k 1.52 | 1d+ 2.94
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.5 for Black)];B[oe]C[Per 10,000 corners: 15k-10k 0.3 | 9k-5k 0.77 | 4k-1k 1.48 | 1d+ 2.94
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.4 for Black)];W[pf]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.58 | 4k-1k 1.03 | 1d+ 2.59
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.5 for Black)];B[qc]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.39 | 4k-1k 0.77 | 1d+ 2.36
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.4 for Black)])(;B[nc]C[Per 10,000 corners: 15k-10k 1.78 | 9k-5k 2.54 | 4k-1k 5.05 | 1d+ 3.83
+Corner settles here: 1%
+KataGo: Better for White (-2.1 for Black)](;W[pe]C[Per 10,000 corners: 15k-10k 0.54 | 9k-5k 1.11 | 4k-1k 3.01 | 1d+ 2.1
+Corner settles here: 0%
+KataGo: Even (-0.6 for Black)];B[pf]C[Per 10,000 corners: 15k-10k 0.34 | 9k-5k 0.8 | 4k-1k 2.56 | 1d+ 2.05
+Corner settles here: 0%
+KataGo: Even (-0.6 for Black)];W[oe]C[Per 10,000 corners: 15k-10k 0.26 | 9k-5k 0.67 | 4k-1k 2.33 | 1d+ 2.01
+Corner settles here: 0%
+KataGo: Even (-0.9 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 0.19 | 9k-5k 0.61 | 4k-1k 2.27 | 1d+ 2.01
+Corner settles here: 0%
+KataGo: Even (-0.8 for Black)];W[oc]C[Per 10,000 corners: 15k-10k 0.15 | 9k-5k 0.48 | 4k-1k 1.92 | 1d+ 1.83
+Corner settles here: 2%
+KataGo: Even (-0.9 for Black)])(;W[od]C[Per 10,000 corners: 15k-10k 0.58 | 9k-5k 0.81 | 4k-1k 1.08 | 1d+ 0.98
+Corner settles here: 0%
+KataGo: Better for White (-2.3 for Black)]))(;B[mc]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 1.71 | 4k-1k 6.45 | 1d+ 5.84
+Corner settles here: 0%
+KataGo: Better for White (-2.1 for Black)](;W[pe]C[Per 10,000 corners: 15k-10k 0.23 | 9k-5k 0.59 | 4k-1k 2.61 | 1d+ 2.27
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.1 for Black)];B[pf]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.5 | 4k-1k 2.42 | 1d+ 2.14
+Corner settles here: 0%
+KataGo: Even (-0.9 for Black)];W[oe]C[Per 10,000 corners: 15k-10k 0.13 | 9k-5k 0.42 | 4k-1k 2.01 | 1d+ 1.92
+Corner settles here: 0%
+KataGo: Even (-0.6 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 0.12 | 9k-5k 0.37 | 4k-1k 2.0 | 1d+ 1.74
+Corner settles here: 0%
+KataGo: Even (-0.5 for Black)];W[qc]C[Per 10,000 corners: 15k-10k 0.07 | 9k-5k 0.25 | 4k-1k 1.6 | 1d+ 1.52
+Corner settles here: 1%
+KataGo: Even (-0.6 for Black)])(;W[od]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.4 | 4k-1k 1.94 | 1d+ 2.9
+Corner settles here: 2%
+KataGo: Better for White (-2.1 for Black)]))(;B[qc]C[Per 10,000 corners: 15k-10k 3.25 | 9k-5k 2.09 | 4k-1k 1.07 | 1d+ 0.22
+Corner settles here: 0%
+KataGo: Better for White (-3.0 for Black)](;W[qb]C[Per 10,000 corners: 15k-10k 1.32 | 9k-5k 1.02 | 4k-1k 0.88 | 1d+ 0.22
+Corner settles here: 0%
+KataGo: Better for White (-3.1 for Black)])(;W[pd]C[Per 10,000 corners: 15k-10k 1.39 | 9k-5k 0.84 | 4k-1k 0.15 | 1d+ 0.0
+Corner settles here: 0%
+KataGo: Even (-0.4 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 1.19 | 9k-5k 0.82 | 4k-1k 0.15 | 1d+ 0.0
+Corner settles here: 2%
+KataGo: Even (-0.4 for Black)]))(;B[rc]C[Per 10,000 corners: 15k-10k 0.55 | 9k-5k 0.27 | 4k-1k 3.62 | 1d+ 0.67
+Corner settles here: 3%
+KataGo: Better for White (-2.4 for Black)];W[mc]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.08 | 4k-1k 1.45 | 1d+ 0.18
+Corner settles here: 11%
+KataGo: Better for White (-2.4 for Black)]))(;B[pc]C[Per 10,000 corners: 15k-10k 15.51 | 9k-5k 12.69 | 4k-1k 24.65 | 1d+ 19.26
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.6 for Black)](;W[mc]C[LINE. First common at 15k-10k, most common at 4k-1k.
 Per 10,000 corners: 15k-10k 1.23 | 9k-5k 1.18 | 4k-1k 1.92 | 1d+ 0.8
-Corner settles here: 42%])(;B[lc]C[LINE. First common at 15k-10k, most common at 4k-1k.
+Corner settles here: 42%
+KataGo: Slightly better for Black (+1.0 for Black)])(;B[lc]C[LINE. First common at 15k-10k, most common at 4k-1k.
 Per 10,000 corners: 15k-10k 1.24 | 9k-5k 1.04 | 4k-1k 1.39 | 1d+ 0.8
-Corner settles here: 42%])(;W[kc]C[Per 10,000 corners: 15k-10k 1.0 | 9k-5k 1.02 | 4k-1k 1.89 | 1d+ 1.2
-Corner settles here: 20%])(;B[mc]C[LINE. First common at 4k-1k, most common at 1d+.
+Corner settles here: 42%
+KataGo: Better for White (-3.4 for Black)])(;W[kc]C[Per 10,000 corners: 15k-10k 1.0 | 9k-5k 1.02 | 4k-1k 1.89 | 1d+ 1.2
+Corner settles here: 20%
+KataGo: Even (+0.3 for Black)])(;B[mc]C[LINE. First common at 4k-1k, most common at 1d+.
 Per 10,000 corners: 15k-10k 0.64 | 9k-5k 0.29 | 4k-1k 2.97 | 1d+ 3.03
-Corner settles here: 58%])(;W[lc]C[Per 10,000 corners: 15k-10k 0.51 | 9k-5k 0.43 | 4k-1k 1.16 | 1d+ 0.53
-Corner settles here: 25%])(;W[pf]C[Per 10,000 corners: 15k-10k 0.3 | 9k-5k 0.48 | 4k-1k 1.12 | 1d+ 1.52
-Corner settles here: 8%])(;W[oc]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.42 | 4k-1k 1.12 | 1d+ 2.01
-Corner settles here: 1%]))(;W[qc]C[Per 10,000 corners: 15k-10k 6.27 | 9k-5k 5.89 | 4k-1k 11.88 | 1d+ 12.57
-Corner settles here: 0%](;B[od]C[Per 10,000 corners: 15k-10k 1.62 | 9k-5k 1.81 | 4k-1k 2.83 | 1d+ 6.73
-Corner settles here: 1%](;W[oc]C[Per 10,000 corners: 15k-10k 0.92 | 9k-5k 0.88 | 4k-1k 1.17 | 1d+ 2.5
-Corner settles here: 1%])(;W[pd]C[Per 10,000 corners: 15k-10k 0.37 | 9k-5k 0.53 | 4k-1k 1.19 | 1d+ 3.61
-Corner settles here: 0%];B[pe]C[Per 10,000 corners: 15k-10k 0.35 | 9k-5k 0.5 | 4k-1k 1.17 | 1d+ 3.61
-Corner settles here: 0%];W[oc]C[Per 10,000 corners: 15k-10k 0.34 | 9k-5k 0.5 | 4k-1k 1.16 | 1d+ 3.61
-Corner settles here: 0%];B[nc]C[Per 10,000 corners: 15k-10k 0.12 | 9k-5k 0.14 | 4k-1k 0.59 | 1d+ 2.63
-Corner settles here: 0%];W[nb]C[Per 10,000 corners: 15k-10k 0.02 | 9k-5k 0.02 | 4k-1k 0.27 | 1d+ 2.27
-Corner settles here: 0%]))(;B[pc]C[Per 10,000 corners: 15k-10k 1.59 | 9k-5k 1.53 | 4k-1k 2.24 | 1d+ 1.07
-Corner settles here: 0%];W[pb]C[Per 10,000 corners: 15k-10k 0.64 | 9k-5k 0.81 | 4k-1k 1.29 | 1d+ 0.8
-Corner settles here: 0%])(;B[oc]C[Per 10,000 corners: 15k-10k 0.57 | 9k-5k 0.71 | 4k-1k 2.66 | 1d+ 1.29
-Corner settles here: 1%];W[pd]C[Per 10,000 corners: 15k-10k 0.44 | 9k-5k 0.67 | 4k-1k 2.42 | 1d+ 1.11
-Corner settles here: 1%];B[pg]C[Per 10,000 corners: 15k-10k 0.02 | 9k-5k 0.17 | 4k-1k 1.25 | 1d+ 0.49
-Corner settles here: 1%])(;B[nc]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.39 | 4k-1k 1.93 | 1d+ 0.71
-Corner settles here: 3%]))(;W[od]C[Per 10,000 corners: 15k-10k 4.58 | 9k-5k 4.76 | 4k-1k 9.51 | 1d+ 9.99
-Corner settles here: 0%](;B[pc]C[Per 10,000 corners: 15k-10k 2.57 | 9k-5k 3.01 | 4k-1k 5.92 | 1d+ 5.53
-Corner settles here: 2%](;W[oc]C[Per 10,000 corners: 15k-10k 1.38 | 9k-5k 1.84 | 4k-1k 4.22 | 1d+ 4.81
-Corner settles here: 1%];B[pb]C[Per 10,000 corners: 15k-10k 0.58 | 9k-5k 1.09 | 4k-1k 3.5 | 1d+ 3.97
-Corner settles here: 6%])(;W[pd]C[Per 10,000 corners: 15k-10k 0.7 | 9k-5k 0.74 | 4k-1k 1.04 | 1d+ 0.49
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 0.66 | 9k-5k 0.73 | 4k-1k 1.02 | 1d+ 0.49
-Corner settles here: 1%]))(;B[oe]C[Per 10,000 corners: 15k-10k 0.11 | 9k-5k 0.13 | 4k-1k 1.04 | 1d+ 2.05
-Corner settles here: 0%]))(;W[pd]C[Per 10,000 corners: 15k-10k 5.15 | 9k-5k 4.4 | 4k-1k 6.14 | 1d+ 1.96
-Corner settles here: 0%];B[qd]C[Per 10,000 corners: 15k-10k 2.74 | 9k-5k 3.12 | 4k-1k 5.11 | 1d+ 1.25
-Corner settles here: 1%];W[pc]C[Per 10,000 corners: 15k-10k 1.34 | 9k-5k 1.68 | 4k-1k 3.79 | 1d+ 0.98
-Corner settles here: 1%];B[qc]C[Per 10,000 corners: 15k-10k 1.02 | 9k-5k 1.36 | 4k-1k 3.41 | 1d+ 0.8
-Corner settles here: 2%];W[pe]C[Per 10,000 corners: 15k-10k 0.36 | 9k-5k 0.55 | 4k-1k 1.5 | 1d+ 0.36
-Corner settles here: 2%];B[pf]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.43 | 4k-1k 1.28 | 1d+ 0.31
-Corner settles here: 1%])(;W[oc]C[Per 10,000 corners: 15k-10k 1.97 | 9k-5k 2.05 | 4k-1k 5.73 | 1d+ 6.64
-Corner settles here: 0%];B[qc]C[Per 10,000 corners: 15k-10k 0.72 | 9k-5k 1.04 | 4k-1k 4.15 | 1d+ 4.5
-Corner settles here: 5%];W[lc]C[LINE. First common at 4k-1k, most common at 1d+.
+Corner settles here: 58%
+KataGo: Better for White (-3.6 for Black)])(;W[lc]C[Per 10,000 corners: 15k-10k 0.51 | 9k-5k 0.43 | 4k-1k 1.16 | 1d+ 0.53
+Corner settles here: 25%
+KataGo: Even (+0.5 for Black)])(;W[pf]C[Per 10,000 corners: 15k-10k 0.3 | 9k-5k 0.48 | 4k-1k 1.12 | 1d+ 1.52
+Corner settles here: 8%
+KataGo: Even (+0.2 for Black)])(;W[oc]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.42 | 4k-1k 1.12 | 1d+ 2.01
+Corner settles here: 1%
+KataGo: Even (-0.4 for Black)]))(;W[qc]C[Per 10,000 corners: 15k-10k 6.27 | 9k-5k 5.89 | 4k-1k 11.88 | 1d+ 12.57
+Corner settles here: 0%
+KataGo: Even (-0.9 for Black)](;B[od]C[Per 10,000 corners: 15k-10k 1.62 | 9k-5k 1.81 | 4k-1k 2.83 | 1d+ 6.73
+Corner settles here: 1%
+KataGo: Even (-0.9 for Black)](;W[oc]C[Per 10,000 corners: 15k-10k 0.92 | 9k-5k 0.88 | 4k-1k 1.17 | 1d+ 2.5
+Corner settles here: 1%
+KataGo: Even (-0.7 for Black)])(;W[pd]C[Per 10,000 corners: 15k-10k 0.37 | 9k-5k 0.53 | 4k-1k 1.19 | 1d+ 3.61
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.1 for Black)];B[pe]C[Per 10,000 corners: 15k-10k 0.35 | 9k-5k 0.5 | 4k-1k 1.17 | 1d+ 3.61
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.0 for Black)];W[oc]C[Per 10,000 corners: 15k-10k 0.34 | 9k-5k 0.5 | 4k-1k 1.16 | 1d+ 3.61
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.1 for Black)];B[nc]C[Per 10,000 corners: 15k-10k 0.12 | 9k-5k 0.14 | 4k-1k 0.59 | 1d+ 2.63
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.4 for Black)];W[nb]C[Per 10,000 corners: 15k-10k 0.02 | 9k-5k 0.02 | 4k-1k 0.27 | 1d+ 2.27
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.4 for Black)]))(;B[pc]C[Per 10,000 corners: 15k-10k 1.59 | 9k-5k 1.53 | 4k-1k 2.24 | 1d+ 1.07
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.5 for Black)];W[pb]C[Per 10,000 corners: 15k-10k 0.64 | 9k-5k 0.81 | 4k-1k 1.29 | 1d+ 0.8
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.8 for Black)])(;B[oc]C[Per 10,000 corners: 15k-10k 0.57 | 9k-5k 0.71 | 4k-1k 2.66 | 1d+ 1.29
+Corner settles here: 1%
+KataGo: Better for White (-2.4 for Black)];W[pd]C[Per 10,000 corners: 15k-10k 0.44 | 9k-5k 0.67 | 4k-1k 2.42 | 1d+ 1.11
+Corner settles here: 1%
+KataGo: Better for White (-2.5 for Black)];B[pg]C[Per 10,000 corners: 15k-10k 0.02 | 9k-5k 0.17 | 4k-1k 1.25 | 1d+ 0.49
+Corner settles here: 1%
+KataGo: Better for White (-3.1 for Black)])(;B[nc]C[Per 10,000 corners: 15k-10k 0.17 | 9k-5k 0.39 | 4k-1k 1.93 | 1d+ 0.71
+Corner settles here: 3%
+KataGo: Slightly better for White (-1.4 for Black)]))(;W[od]C[Per 10,000 corners: 15k-10k 4.58 | 9k-5k 4.76 | 4k-1k 9.51 | 1d+ 9.99
+Corner settles here: 0%
+KataGo: Even (+0.3 for Black)](;B[pc]C[Per 10,000 corners: 15k-10k 2.57 | 9k-5k 3.01 | 4k-1k 5.92 | 1d+ 5.53
+Corner settles here: 2%
+KataGo: Even (+0.5 for Black)](;W[oc]C[Per 10,000 corners: 15k-10k 1.38 | 9k-5k 1.84 | 4k-1k 4.22 | 1d+ 4.81
+Corner settles here: 1%
+KataGo: Even (+0.3 for Black)];B[pb]C[Per 10,000 corners: 15k-10k 0.58 | 9k-5k 1.09 | 4k-1k 3.5 | 1d+ 3.97
+Corner settles here: 6%
+KataGo: Even (+0.4 for Black)])(;W[pd]C[Per 10,000 corners: 15k-10k 0.7 | 9k-5k 0.74 | 4k-1k 1.04 | 1d+ 0.49
+Corner settles here: 0%
+KataGo: Better for Black (+2.1 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 0.66 | 9k-5k 0.73 | 4k-1k 1.02 | 1d+ 0.49
+Corner settles here: 1%
+KataGo: Better for Black (+2.1 for Black)]))(;B[oe]C[Per 10,000 corners: 15k-10k 0.11 | 9k-5k 0.13 | 4k-1k 1.04 | 1d+ 2.05
+Corner settles here: 0%
+KataGo: Slightly better for White (-1.9 for Black)]))(;W[pd]C[Per 10,000 corners: 15k-10k 5.15 | 9k-5k 4.4 | 4k-1k 6.14 | 1d+ 1.96
+Corner settles here: 0%
+KataGo: Even (-0.2 for Black)];B[qd]C[Per 10,000 corners: 15k-10k 2.74 | 9k-5k 3.12 | 4k-1k 5.11 | 1d+ 1.25
+Corner settles here: 1%
+KataGo: Even (-0.5 for Black)];W[pc]C[Per 10,000 corners: 15k-10k 1.34 | 9k-5k 1.68 | 4k-1k 3.79 | 1d+ 0.98
+Corner settles here: 1%
+KataGo: Even (-0.5 for Black)];B[qc]C[Per 10,000 corners: 15k-10k 1.02 | 9k-5k 1.36 | 4k-1k 3.41 | 1d+ 0.8
+Corner settles here: 2%
+KataGo: Even (-0.4 for Black)];W[pe]C[Per 10,000 corners: 15k-10k 0.36 | 9k-5k 0.55 | 4k-1k 1.5 | 1d+ 0.36
+Corner settles here: 2%
+KataGo: Even (+0.7 for Black)];B[pf]C[Per 10,000 corners: 15k-10k 0.22 | 9k-5k 0.43 | 4k-1k 1.28 | 1d+ 0.31
+Corner settles here: 1%
+KataGo: Even (+0.7 for Black)])(;W[oc]C[Per 10,000 corners: 15k-10k 1.97 | 9k-5k 2.05 | 4k-1k 5.73 | 1d+ 6.64
+Corner settles here: 0%
+KataGo: Even (+0.3 for Black)];B[qc]C[Per 10,000 corners: 15k-10k 0.72 | 9k-5k 1.04 | 4k-1k 4.15 | 1d+ 4.5
+Corner settles here: 5%
+KataGo: Even (+0.4 for Black)];W[lc]C[LINE. First common at 4k-1k, most common at 1d+.
 Per 10,000 corners: 15k-10k 0.3 | 9k-5k 0.59 | 4k-1k 2.39 | 1d+ 2.85
-Corner settles here: 45%])(;B[od]C[Per 10,000 corners: 15k-10k 2.67 | 9k-5k 2.47 | 4k-1k 3.88 | 1d+ 1.92
-Corner settles here: 0%])(;B[nd]C[Per 10,000 corners: 15k-10k 1.45 | 9k-5k 2.04 | 4k-1k 2.08 | 1d+ 3.7
-Corner settles here: 0%])(;B[nc]C[Per 10,000 corners: 15k-10k 1.34 | 9k-5k 1.35 | 4k-1k 2.24 | 1d+ 2.67
-Corner settles here: 0%])(;B[oc]C[Per 10,000 corners: 15k-10k 1.56 | 9k-5k 0.68 | 4k-1k 1.02 | 1d+ 0.13
-Corner settles here: 0%])(;W[qd]C[Per 10,000 corners: 15k-10k 0.96 | 9k-5k 0.82 | 4k-1k 1.85 | 1d+ 1.38
-Corner settles here: 0%];B[pd]C[Per 10,000 corners: 15k-10k 0.51 | 9k-5k 0.63 | 4k-1k 1.67 | 1d+ 1.07
-Corner settles here: 0%])(;W[kc]C[Per 10,000 corners: 15k-10k 0.57 | 9k-5k 0.87 | 4k-1k 2.39 | 1d+ 2.01
-Corner settles here: 0%])(;B[kc]C[Per 10,000 corners: 15k-10k 0.62 | 9k-5k 1.06 | 4k-1k 1.94 | 1d+ 1.11
-Corner settles here: 0%])(;B[kd]C[Per 10,000 corners: 15k-10k 0.71 | 9k-5k 0.82 | 4k-1k 2.08 | 1d+ 1.07
-Corner settles here: 0%])(;W[qg]C[Per 10,000 corners: 15k-10k 0.73 | 9k-5k 0.85 | 4k-1k 1.55 | 1d+ 1.65
-Corner settles here: 0%])(;B[qi]C[Per 10,000 corners: 15k-10k 0.63 | 9k-5k 0.85 | 4k-1k 1.57 | 1d+ 1.16
-Corner settles here: 0%])(;W[qi]C[Per 10,000 corners: 15k-10k 0.61 | 9k-5k 0.8 | 4k-1k 1.56 | 1d+ 1.2
-Corner settles here: 0%])(;B[lc]C[Per 10,000 corners: 15k-10k 0.4 | 9k-5k 1.11 | 4k-1k 1.43 | 1d+ 0.67
-Corner settles here: 0%])(;B[qh]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 0.77 | 4k-1k 1.04 | 1d+ 1.03
-Corner settles here: 0%])(;B[pi]C[Per 10,000 corners: 15k-10k 0.41 | 9k-5k 0.56 | 4k-1k 1.57 | 1d+ 1.16
-Corner settles here: 0%])(;W[qh]C[Per 10,000 corners: 15k-10k 0.5 | 9k-5k 0.57 | 4k-1k 1.11 | 1d+ 0.98
-Corner settles here: 0%])(;W[lc]C[Per 10,000 corners: 15k-10k 0.27 | 9k-5k 0.36 | 4k-1k 1.11 | 1d+ 0.67
-Corner settles here: 0%])(;W[kd]C[Per 10,000 corners: 15k-10k 0.21 | 9k-5k 0.33 | 4k-1k 1.04 | 1d+ 0.62
-Corner settles here: 0%])(;W[pi]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.3 | 4k-1k 1.01 | 1d+ 0.85
-Corner settles here: 0%])))
+Corner settles here: 45%
+KataGo: Even (+0.4 for Black)])(;B[od]C[Per 10,000 corners: 15k-10k 2.67 | 9k-5k 2.47 | 4k-1k 3.88 | 1d+ 1.92
+Corner settles here: 0%
+KataGo: Better for White (-2.0 for Black)])(;B[nd]C[Per 10,000 corners: 15k-10k 1.45 | 9k-5k 2.04 | 4k-1k 2.08 | 1d+ 3.7
+Corner settles here: 0%
+KataGo: Better for White (-2.3 for Black)])(;B[nc]C[Per 10,000 corners: 15k-10k 1.34 | 9k-5k 1.35 | 4k-1k 2.24 | 1d+ 2.67
+Corner settles here: 0%
+KataGo: Better for White (-2.4 for Black)])(;B[oc]C[Per 10,000 corners: 15k-10k 1.56 | 9k-5k 0.68 | 4k-1k 1.02 | 1d+ 0.13
+Corner settles here: 0%
+KataGo: Better for White (-3.5 for Black)])(;W[qd]C[Per 10,000 corners: 15k-10k 0.96 | 9k-5k 0.82 | 4k-1k 1.85 | 1d+ 1.38
+Corner settles here: 0%
+KataGo: Even (+0.5 for Black)];B[pd]C[Per 10,000 corners: 15k-10k 0.51 | 9k-5k 0.63 | 4k-1k 1.67 | 1d+ 1.07
+Corner settles here: 0%
+KataGo: Even (+0.1 for Black)])(;W[kc]C[Per 10,000 corners: 15k-10k 0.57 | 9k-5k 0.87 | 4k-1k 2.39 | 1d+ 2.01
+Corner settles here: 0%
+KataGo: Even (+0.1 for Black)])(;B[kc]C[Per 10,000 corners: 15k-10k 0.62 | 9k-5k 1.06 | 4k-1k 1.94 | 1d+ 1.11
+Corner settles here: 0%
+KataGo: Better for White (-2.7 for Black)])(;B[kd]C[Per 10,000 corners: 15k-10k 0.71 | 9k-5k 0.82 | 4k-1k 2.08 | 1d+ 1.07
+Corner settles here: 0%
+KataGo: Better for White (-2.6 for Black)])(;W[qg]C[Per 10,000 corners: 15k-10k 0.73 | 9k-5k 0.85 | 4k-1k 1.55 | 1d+ 1.65
+Corner settles here: 0%
+KataGo: Slightly better for Black (+1.4 for Black)])(;B[qi]C[Per 10,000 corners: 15k-10k 0.63 | 9k-5k 0.85 | 4k-1k 1.57 | 1d+ 1.16
+Corner settles here: 0%
+KataGo: Better for White (-3.1 for Black)])(;W[qi]C[Per 10,000 corners: 15k-10k 0.61 | 9k-5k 0.8 | 4k-1k 1.56 | 1d+ 1.2
+Corner settles here: 0%
+KataGo: Even (+0.7 for Black)])(;B[lc]C[Per 10,000 corners: 15k-10k 0.4 | 9k-5k 1.11 | 4k-1k 1.43 | 1d+ 0.67
+Corner settles here: 0%
+KataGo: Better for White (-2.7 for Black)])(;B[qh]C[Per 10,000 corners: 15k-10k 0.74 | 9k-5k 0.77 | 4k-1k 1.04 | 1d+ 1.03
+Corner settles here: 0%
+KataGo: Better for White (-3.3 for Black)])(;B[pi]C[Per 10,000 corners: 15k-10k 0.41 | 9k-5k 0.56 | 4k-1k 1.57 | 1d+ 1.16
+Corner settles here: 0%
+KataGo: Better for White (-2.6 for Black)])(;W[qh]C[Per 10,000 corners: 15k-10k 0.5 | 9k-5k 0.57 | 4k-1k 1.11 | 1d+ 0.98
+Corner settles here: 0%
+KataGo: Even (+0.8 for Black)])(;W[lc]C[Per 10,000 corners: 15k-10k 0.27 | 9k-5k 0.36 | 4k-1k 1.11 | 1d+ 0.67
+Corner settles here: 0%
+KataGo: Even (+0.4 for Black)])(;W[kd]C[Per 10,000 corners: 15k-10k 0.21 | 9k-5k 0.33 | 4k-1k 1.04 | 1d+ 0.62
+Corner settles here: 0%
+KataGo: Even (+0.1 for Black)])(;W[pi]C[Per 10,000 corners: 15k-10k 0.18 | 9k-5k 0.3 | 4k-1k 1.01 | 1d+ 0.85
+Corner settles here: 0%
+KataGo: Even (+0.5 for Black)])))

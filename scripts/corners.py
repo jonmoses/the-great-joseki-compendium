@@ -3,7 +3,8 @@
 usage: python3 -I corners.py DUMP.json.gz OUT.tsv [BOTS.txt]
 
 Output columns: game id, year, black rank floor, white rank floor (0 = 30k), black account id,
-white account id, sequence.
+white account id, whether the corner's first mover won the game (1, 0, or - when the
+game was not decided by resignation or a count), sequence.
 A sequence is the stones landing in one 9x9 quadrant during the game's first WINDOW
 plies, mapped to one corner and one diagonal orientation, first mover = X, at most
 MAXLEN stones. A '.' token marks where the corner went quiet for GAP plies or more
@@ -61,6 +62,11 @@ def main():
             if skip or rb is None or rw is None or not (0 <= rb < 40) or not (0 <= rw < 40):
                 continue
             year = time.gmtime(g.get('start_time') or 0).tm_year
+            oc = g.get('outcome') or ''
+            won = -1   # colour that won on the board: 0 black, 1 white, -1 not decided by resignation or count
+            if oc == 'Resignation' or 'point' in oc:
+                w = g.get('winner')
+                won = 0 if w == g.get('black_player_id') else 1 if w == g.get('white_player_id') else -1
             seqs = [[], [], [], []]
             last = [0, 0, 0, 0]
             first = [None, None, None, None]
@@ -94,7 +100,8 @@ def main():
                 # '.' = went quiet (complete); no mark = cut by the stone cap or the window
                 if closed[c] and len(s) < MAXLEN:
                     txt += ' .'
-                o.write('%d\t%d\t%d\t%d\t%d\t%d\t%s\n' % (g.get('game_id') or 0, year, int(rb), int(rw), pb.get('id') or 0, pw.get('id') or 0, txt))
+                xwon = '-' if won < 0 else ('1' if won == first[c] else '0')
+                o.write('%d\t%d\t%d\t%d\t%d\t%d\t%s\t%s\n' % (g.get('game_id') or 0, year, int(rb), int(rw), pb.get('id') or 0, pw.get('id') or 0, xwon, txt))
             kept += 1
             if kept % 200000 == 0:
                 print(seen, kept, flush=True)
