@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Great Joseki Compendium</title>
+<style>
+  :root { --bg:#f7f4ee; --fg:#1d1b18; --muted:#6b655c; --line:#d8d1c4; --board:#e3bd72; --grid:#5a4520; --accent:#1f5fae; --card:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17171a; --fg:#ece9e2; --muted:#9a958b; --line:#34343a; --board:#b8924e; --grid:#3c2d10; --accent:#7fb2f0; --card:#202024; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
+  main { max-width:980px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  p.sub { margin:0 0 16px; color:var(--muted); }
+  .wrap { display:grid; grid-template-columns:minmax(0,460px) minmax(0,1fr); gap:20px; }
+  @media (max-width:760px) { .wrap { grid-template-columns:1fr; } }
+  svg { width:100%; height:auto; display:block; border-radius:6px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; }
+  button { font:inherit; color:var(--fg); background:var(--card); border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; }
+  button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
+  button:disabled { opacity:.45; cursor:default; }
+  .seq { font-family:ui-monospace, monospace; font-size:14px; min-height:22px; margin:10px 0; overflow-wrap:anywhere; }
+  .tag { display:inline-block; border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:1px 10px; font-size:13px; margin:0 6px 6px 0; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:right; padding:5px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; }
+  tbody tr { cursor:pointer; }
+  tbody tr:hover, tbody tr:focus { background:var(--card); outline:none; }
+  td.sel, th.sel { color:var(--accent); font-weight:600; }
+  .note { color:var(--muted); font-size:13px; margin-top:12px; }
+  .scroll { overflow-x:auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>The Great Joseki Compendium</h1>
+  <p class="sub">Corner sequences from 1.2 million ranked OGS games, by rank band. Click a move to play it.</p>
+  <div class="wrap">
+    <div>
+      <svg id="board" viewBox="0 0 430 430" role="img" aria-label="Corner of a Go board"></svg>
+      <div class="seq" id="seq"></div>
+      <div class="bar">
+        <button id="back">Back</button>
+        <button id="reset">Start over</button>
+      </div>
+    </div>
+    <div>
+      <div class="bar" id="bands" role="group" aria-label="Rank band"></div>
+      <div id="tags"></div>
+      <div class="scroll">
+        <table>
+          <thead><tr id="head"></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="note" id="note"></p>
+    </div>
+  </div>
+</main>
+<script>
+const N = 13, CELL = 32, PAD = 23;
+const svgNS = 'http://www.w3.org/2000/svg';
+let book = null, path = [], band = 0;
+
+function el(name, attrs, text) {
+  const e = document.createElementNS(svgNS, name);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+// corner drawn in the upper right: x counts from the right edge, y from the top
+function px(x) { return PAD + (N - x) * CELL; }
+function py(y) { return PAD + (y - 1) * CELL; }
+function parse(tok) { const [x, y] = tok.slice(1).split('-').map(Number); return { p: tok[0], x, y }; }
+function cur() { return path.join(' '); }
+function nextNames() { return path.length ? book.positions[cur()].next : book.meta.first_moves; }
+function visits(i) { return path.length ? book.positions[cur()].count[i] : book.meta.corners[i]; }
+function pct(v) { return v >= 0.1 ? (100 * v).toFixed(0) + '%' : (100 * v).toFixed(1) + '%'; }
+
+function draw() {
+  const svg = document.getElementById('board');
+  svg.replaceChildren();
+  svg.append(el('rect', { x: 0, y: 0, width: 430, height: 430, fill: 'var(--board)' }));
+  for (let i = 1; i <= N; i++) {
+    svg.append(el('line', { x1: px(i), y1: py(1), x2: px(i), y2: 430, stroke: 'var(--grid)', 'stroke-width': 1 }));
+    svg.append(el('line', { x1: 0, y1: py(i), x2: px(1), y2: py(i), stroke: 'var(--grid)', 'stroke-width': 1 }));
+  }
+  for (const [x, y] of [[4, 4], [10, 4], [4, 10], [10, 10]]) svg.append(el('circle', { cx: px(x), cy: py(y), r: 3, fill: 'var(--grid)' }));
+  path.forEach((tok, i) => {
+    const m = parse(tok);
+    if (m.x > N || m.y > N) return;
+    const black = m.p === 'X';
+    svg.append(el('circle', { cx: px(m.x), cy: py(m.y), r: 14.5, fill: black ? '#111' : '#f6f6f6', stroke: '#111', 'stroke-width': 1 }));
+    svg.append(el('text', { x: px(m.x), y: py(m.y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif' }, String(i + 1)));
+  });
+  const here = visits(band);
+  nextNames().slice(0, 12).forEach((name, i) => {
+    const m = parse(name.split(' ').pop());
+    if (m.x > N || m.y > N) return;
+    const share = here ? book.positions[name].count[band] / here : 0;
+    const g = el('g', { style: 'cursor:pointer' });
+    if (i >= 3 && share < 0.01) return;
+    const black = m.p === 'X';
+    g.append(el('circle', { cx: px(m.x), cy: py(m.y), r: 13, fill: black ? '#222' : '#fafafa', 'fill-opacity': 0.8, stroke: black ? '#fafafa' : '#222', 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+    g.append(el('text', { x: px(m.x), y: py(m.y) + 4.5, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 700, fill: black ? '#fff' : '#111', 'font-family': 'system-ui, sans-serif' }, String.fromCharCode(65 + i)));
+    g.addEventListener('click', () => { path = name.split(' '); render(); });
+    svg.append(g);
+  });
+}
+
+function render() {
+  draw();
+  history.replaceState(null, '', path.length ? '#' + path.join('_') : location.pathname);
+  document.getElementById('seq').textContent = cur() || 'Empty corner';
+  document.getElementById('back').disabled = !path.length;
+  document.getElementById('reset').disabled = !path.length;
+  const bands = book.meta.bands;
+  const bar = document.getElementById('bands');
+  bar.replaceChildren(...bands.map((b, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = b; btn.setAttribute('aria-pressed', String(i === band));
+    btn.addEventListener('click', () => { band = i; render(); });
+    return btn;
+  }));
+  const tags = document.getElementById('tags');
+  tags.replaceChildren();
+  if (path.length) {
+    const p = book.positions[cur()];
+    const add = (t) => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.append(s); };
+    if (p.line) add('Settled line');
+    add('First common at ' + p.first_band);
+    add('Most common at ' + p.peak_band);
+    add('Corner settles here ' + Math.round(100 * p.settled_share) + '%');
+  }
+  const head = document.getElementById('head');
+  head.replaceChildren(...['Next move'].concat(bands).map((t, i) => {
+    const th = document.createElement('th'); th.textContent = t; if (i - 1 === band) th.className = 'sel'; return th;
+  }));
+  const rows = document.getElementById('rows');
+  rows.replaceChildren(...nextNames().map((name, i) => {
+    const tr = document.createElement('tr'); tr.tabIndex = 0;
+    const tok = name.split(' ').pop();
+    const same = path.length && tok[0] === path[path.length - 1][0];
+    const td = document.createElement('td');
+    td.textContent = (i < 12 ? String.fromCharCode(65 + i) + '  ' : '') + tok + (same ? ' (other side elsewhere)' : '');
+    tr.append(td);
+    bands.forEach((b, j) => {
+      const c = document.createElement('td'); const v = visits(j);
+      c.textContent = v ? pct(book.positions[name].count[j] / v) : '';
+      if (j === band) c.className = 'sel';
+      tr.append(c);
+    });
+    const go = () => { path = name.split(' '); render(); };
+    tr.addEventListener('click', go);
+    tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+    return tr;
+  }));
+  const per = path.length ? book.positions[cur()].per10k[band] : 10000;
+  document.getElementById('note').textContent = (path.length
+    ? 'This position: ' + per + ' per 10,000 corners at ' + bands[band] + '. '
+    : '') + 'Percentages are the share of visits to this position that continue with each move. X is the side that played first in the corner. Common is not the same as correct: nothing here was checked against a joseki book.';
+}
+
+document.getElementById('back').addEventListener('click', () => { path.pop(); render(); });
+document.getElementById('reset').addEventListener('click', () => { path = []; render(); });
+fetch('data/joseki.json').then((r) => r.json()).then((j) => {
+  book = j;
+  const want = decodeURIComponent(location.hash.slice(1)).split('_').join(' ');
+  if (want && book.positions[want]) path = want.split(' ');
+  render();
+})
+  .catch(() => { document.getElementById('note').textContent = 'Could not load data/joseki.json. Serve this folder over HTTP (for example: python3 -m http.server).'; });
+</script>
+</body>
+</html>
